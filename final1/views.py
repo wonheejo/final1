@@ -19,6 +19,10 @@ def output(request):
     EOS = requests.get('https://api.binance.com/api/v1/klines?symbol=EOSUSDT&interval=1m')
     TRX = requests.get('https://api.binance.com/api/v1/klines?symbol=TRXUSDT&interval=1m')
     BCH = requests.get('https://api.binance.com/api/v1/klines?symbol=BCHABCUSDT&interval=1m')
+    XLM = requests.get('https://api.binance.com/api/v1/klines?symbol=XLMUSDT&interval=1m')
+    XMR = requests.get('https://api.binance.com/api/v1/klines?symbol=XMRUSDT&interval=1m')
+    ADA = requests.get('https://api.binance.com/api/v1/klines?symbol=ADAUSDT&interval=1m')
+    ALGO = requests.get('https://api.binance.com/api/v1/klines?symbol=ALGOUSDT&interval=1m')
 
     # request to get binance server time
     t = requests.get('https://api.binance.com/api/v1/time')
@@ -52,6 +56,18 @@ def output(request):
     BCH_df = pd.DataFrame(BCH.json(),
                           columns=['Opentime', 'Open', 'High', 'Low', 'Close', 'Volume', 'Closetime', '7', '8', '9',
                                    '10', '11'])
+    XLM_df = pd.DataFrame(XLM.json(),
+                          columns=['Opentime', 'Open', 'High', 'Low', 'Close', 'Volume', 'Closetime', '7', '8', '9',
+                                   '10', '11'])
+    XMR_df = pd.DataFrame(XMR.json(),
+                          columns=['Opentime', 'Open', 'High', 'Low', 'Close', 'Volume', 'Closetime', '7', '8', '9',
+                                   '10', '11'])
+    ADA_df = pd.DataFrame(ADA.json(),
+                          columns=['Opentime', 'Open', 'High', 'Low', 'Close', 'Volume', 'Closetime', '7', '8', '9',
+                                   '10', '11'])
+    ALGO_df = pd.DataFrame(ALGO.json(),
+                          columns=['Opentime', 'Open', 'High', 'Low', 'Close', 'Volume', 'Closetime', '7', '8', '9',
+                                   '10', '11'])
 
     # changes the binance servertime into time that is readable(gregorian time)
     BTC_df['Opentime'] = pd.to_datetime(BTC_df['Opentime'], unit='ms')
@@ -62,6 +78,10 @@ def output(request):
     EOS_df['Opentime'] = pd.to_datetime(EOS_df['Opentime'], unit='ms')
     TRX_df['Opentime'] = pd.to_datetime(TRX_df['Opentime'], unit='ms')
     BCH_df['Opentime'] = pd.to_datetime(BCH_df['Opentime'], unit='ms')
+    XLM_df['Opentime'] = pd.to_datetime(XLM_df['Opentime'], unit='ms')
+    XMR_df['Opentime'] = pd.to_datetime(XMR_df['Opentime'], unit='ms')
+    ADA_df['Opentime'] = pd.to_datetime(ADA_df['Opentime'], unit='ms')
+    ALGO_df['Opentime'] = pd.to_datetime(ALGO_df['Opentime'], unit='ms')
 
     # makes the 'opentime' of the first column each dataframe as the index
     BTC_df.set_index('Opentime', inplace=True)
@@ -72,6 +92,10 @@ def output(request):
     EOS_df.set_index('Opentime', inplace=True)
     TRX_df.set_index('Opentime', inplace=True)
     BCH_df.set_index('Opentime', inplace=True)
+    XLM_df.set_index('Opentime', inplace=True)
+    XMR_df.set_index('Opentime', inplace=True)
+    ADA_df.set_index('Opentime', inplace=True)
+    ALGO_df.set_index('Opentime', inplace=True)
 
     # droppnig unnecessary columns
     BTC_df = BTC_df.drop(['Closetime', '11'], axis=1)
@@ -82,6 +106,10 @@ def output(request):
     EOS_df = EOS_df.drop(['Closetime', '11'], axis=1)
     TRX_df = TRX_df.drop(['Closetime', '11'], axis=1)
     BCH_df = BCH_df.drop(['Closetime', '11'], axis=1)
+    XLM_df = XLM_df.drop(['Closetime', '11'], axis=1)
+    XMR_df = XMR_df.drop(['Closetime', '11'], axis=1)
+    ADA_df = ADA_df.drop(['Closetime', '11'], axis=1)
+    ALGO_df = ALGO_df.drop(['Closetime', '11'], axis=1)
 
     # converts entire dataframe from object to float and integer
     BTC_df = BTC_df.apply(pd.to_numeric)
@@ -92,6 +120,10 @@ def output(request):
     EOS_df = EOS_df.apply(pd.to_numeric)
     TRX_df = TRX_df.apply(pd.to_numeric)
     BCH_df = BCH_df.apply(pd.to_numeric)
+    XLM_df = XLM_df.apply(pd.to_numeric)
+    XMR_df = XMR_df.apply(pd.to_numeric)
+    ADA_df = ADA_df.apply(pd.to_numeric)
+    ALGO_df = ALGO_df.apply(pd.to_numeric)
 
     # concatenation of the 'close' price columns into one
     data1 = pd.concat(
@@ -109,13 +141,17 @@ def output(request):
     EOS_df = (EOS_df - EOS_df.mean()) / (EOS_df.max() - EOS_df.min())
     TRX_df = (TRX_df - TRX_df.mean()) / (TRX_df.max() - TRX_df.min())
     BCH_df = (BCH_df - BCH_df.mean()) / (BCH_df.max() - BCH_df.min())
+    XLM_df = (XLM_df - XLM_df.mean()) / (XLM_df.max() - XLM_df.min())
+    XMR_df = (XMR_df - XMR_df.mean()) / (XMR_df.max() - XMR_df.min())
+    ADA_df = (ADA_df - ADA_df.mean()) / (ADA_df.max() - ADA_df.min())
+    ALGO_df = (ALGO_df - ALGO_df.mean()) / (ALGO_df.max() - ALGO_df.min())
 
     # concatenation of the 'close' price columns into one
     data2 = pd.concat(
         [BTC_df['Close'], ETH_df['Close'], XRP_df['Close'], BNB_df['Close'], LTC_df['Close'], EOS_df['Close'],
-         TRX_df['Close'], BCH_df['Close']], axis=1)
+         TRX_df['Close'], BCH_df['Close'], XLM_df['Close'], XMR_df['Close'], ADA_df['Close'], ALGO_df['Close']], axis=1)
     # naming of the columns in the new panda dataframe named 'data'
-    data2.columns = ['BTC', 'ETH', 'XRP', 'BNB', 'LTC', 'EOS', 'TRX', 'BCH']
+    data2.columns = ['BTC', 'ETH', 'XRP', 'BNB', 'LTC', 'EOS', 'TRX', 'BCH', 'XLM', 'XMR', 'ADA', 'ALGO']
     coin_name = ['BTC', 'ETH', 'XRP', 'BNB', 'LTC', 'EOS', 'TRX', 'BCH']
 
     data = data2.corr()
