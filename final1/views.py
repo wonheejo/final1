@@ -1,15 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from matplotlib.backends.backend_agg import FigureCanvasAgg
 import requests
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
-from matplotlib import pylab
 from matplotlib import pyplot as plt
-import plotly.graph_objs as go
-import PIL, PIL.Image
-from io import BytesIO
+from datetime import datetime
 
 
 def button(request):
@@ -28,6 +22,10 @@ def output(request):
 
     # request to get binance server time
     t = requests.get('https://api.binance.com/api/v1/time')
+    newtime = t.json()
+    servertime = newtime['serverTime']
+    servertime = datetime.fromtimestamp((int(servertime)/1000)+32400)
+
 
     # names the various columns from the requested candle data in a dataframe
     BTC_df = pd.DataFrame(BTC.json(),
@@ -141,9 +139,8 @@ def output(request):
                            rotation=0,
                            fontsize='15')
     matrix.xaxis.set_ticks_position('top')
-    #matrix.set_title('Correlation of Cryptocurrencies', fontsize=28)
-    # plt.show()
+
     plt.savefig('final1/static/admin/img/matrix.png')
 
-    data = coin_name
+    data = servertime
     return render(request, 'home.html', {'data':data})
