@@ -125,13 +125,6 @@ def output(request):
     ADA_df = ADA_df.apply(pd.to_numeric)
     ALGO_df = ALGO_df.apply(pd.to_numeric)
 
-    # concatenation of the 'close' price columns into one
-    data1 = pd.concat(
-        [BTC_df['Close'], ETH_df['Close'], XRP_df['Close'], BNB_df['Close'], LTC_df['Close'], EOS_df['Close'],
-         TRX_df['Close'], BCH_df['Close']], axis=1)
-    # naming of the columns in the new panda dataframe named 'data'
-    data1.columns = ['BTC', 'ETH', 'XRP', 'BNB', 'LTC', 'EOS', 'TRX', 'BCH']
-
     # normalizes the dataframes
     BTC_df = (BTC_df - BTC_df.mean()) / (BTC_df.max() - BTC_df.min())
     ETH_df = (ETH_df - ETH_df.mean()) / (ETH_df.max() - ETH_df.min())
