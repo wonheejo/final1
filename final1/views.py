@@ -121,7 +121,7 @@ def output(request):
     coin_name = ['BTC', 'ETH', 'XRP', 'BNB', 'LTC', 'EOS', 'TRX', 'BCH']
 
     data = data2.corr()
-    plt.figure(figsize=(19,16))
+    plt.figure(figsize=(20,16))
     matrix = sns.heatmap(data,
                          cmap='YlGnBu',
                          annot=True,
@@ -143,7 +143,7 @@ def output(request):
     matrix.xaxis.set_ticks_position('top')
     #matrix.set_title('Correlation of Cryptocurrencies', fontsize=28)
     # plt.show()
-    plt.savefig('matrix.png')
+    plt.savefig('final1/static/admin/img/matrix.png')
 
     data = coin_name
     return render(request, 'home.html', {'data':data})
