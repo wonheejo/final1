@@ -25,4 +25,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.button),
     path('output', views.output, name='script')
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

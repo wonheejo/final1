@@ -5,17 +5,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Correlation Matrix of Crytocurrencies</title>
+    <title>Correlation Matrix of Cryptocurrencies</title>
 </head>
 <body>
-    <h1> Correlation Matrix</h1>
+    <h1> Correlation Matrix of Cryptocurrencies</h1>
     <button onclick="location.href='{% url 'script' %}'">Exceute Script</button><hr>
-    <h4> Server Timer</h4>
+    <h4> Server Time</h4>
     {% if data %}
     {{data}}
     {% endif %}
     <div>
-         <img src="{% static '/admin/img/matrix.png' %}" height="650" width="1300"/>
+         <img src="{% static '/admin/img/matrix.png' %}" height="650" width="1200"/>
     </div>
 </body>
 </html>
