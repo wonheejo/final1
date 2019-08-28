@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7f4e5491-b03f-4acd-970c-da4ddf74b8dc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/final1/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/final1/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final1/static/admin/img/matrix.png" beforeDir="false" afterPath="$PROJECT_DIR$/final1/static/admin/img/matrix.png" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/final1/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="125" column="39" lean-forward="true" selection-start-line="125" selection-start-column="39" selection-end-line="125" selection-end-column="39" />
+            <state relative-caret-position="368">
+              <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -254,8 +253,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/final1/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="475">
-          <caret line="125" column="39" lean-forward="true" selection-start-line="125" selection-start-column="39" selection-end-line="125" selection-end-column="39" />
+        <state relative-caret-position="368">
+          <caret line="57" column="24" selection-start-line="57" selection-start-column="24" selection-end-line="57" selection-end-column="24" />
         </state>
       </provider>
     </entry>
