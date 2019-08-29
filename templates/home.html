@@ -5,13 +5,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Correlation Matrix of Cryptocurrencies</title>
+    <title>Correlation Matrix of various Cryptocurrencies</title>
 </head>
 <body>
     <h1> Correlation Matrix of Cryptocurrencies</h1>
-    <button onclick="location.href='{% url 'script' %}'" style="border: 2px solid #555555; padding: 15px 32px; background-color: #555555;
+    <button onclick="location.href='{% url 'script' %}'" style="border: 2px solid #555555; padding: 12px 32px; background-color: #555555;
     color: white;">
-        <font size="3">Exceute Script</font>
+        <font size="3">Execute Script</font>
         </button><hr>
     <br/>
     <br/>
@@ -19,16 +19,12 @@
     <br/>
     <br/>
     <h4> Time of Execution: </h4>
-    <div>
         {% if data %}
-    {{data}}
-    {% endif %}
-    </div>
+        {{data}}
+        {% endif %}
     <br/>
     <br/>
-    <br/>
-    <br/>
-    <div style="float:left; width:20%">
+    <div style="float:left; width:20%; margin-top: 10px;">
         <font size="5"> BTC : Bitcoin </font><br/>
         <font size="5">ETH : Ethereum </font><br/>
         <font size="5">XRP : Ripple </font><br/>
@@ -42,7 +38,7 @@
         <font size="5">ADA : Cardano </font><br/>
         <font size="5">ALGO : Algorand </font><br/>
     </div>
-    <div style="float:left; width:33%; margin-top: -250px;">
+    <div style="float:left; width:33%; margin-top: -180px;">
          <img src="{% static '/admin/img/matrix.png' %}" height="750" width="1350"/>
     </div>
 </body>
