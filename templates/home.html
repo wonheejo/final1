@@ -9,13 +9,41 @@
 </head>
 <body>
     <h1> Correlation Matrix of Cryptocurrencies</h1>
-    <button onclick="location.href='{% url 'script' %}'">Exceute Script</button><hr>
-    <h4> Server Time</h4>
-    {% if data %}
+    <button onclick="location.href='{% url 'script' %}'" style="border: 2px solid #555555; padding: 15px 32px; background-color: #555555;
+    color: white;">
+        <font size="3">Exceute Script</font>
+        </button><hr>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <h4> Time of Execution: </h4>
+    <div>
+        {% if data %}
     {{data}}
     {% endif %}
-    <div>
-         <img src="{% static '/admin/img/matrix.png' %}" height="650" width="1200"/>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div style="float:left; width:20%">
+        <font size="5"> BTC : Bitcoin </font><br/>
+        <font size="5">ETH : Ethereum </font><br/>
+        <font size="5">XRP : Ripple </font><br/>
+        <font size="5">BNB : Binance </font><br/>
+        <font size="5">LTC : Litecoin </font><br/>
+        <font size="5">EOS : EOS </font><br/>
+        <font size="5">TRX : Tron </font><br/>
+        <font size="5"> BCH : Bitcoin Cash </font><br/>
+        <font size="5">XLM : Stellar Lumens </font><br/>
+        <font size="5">XMR : Monero </font><br/>
+        <font size="5">ADA : Cardano </font><br/>
+        <font size="5">ALGO : Algorand </font><br/>
+    </div>
+    <div style="float:left; width:33%; margin-top: -250px;">
+         <img src="{% static '/admin/img/matrix.png' %}" height="750" width="1350"/>
     </div>
 </body>
 </html>

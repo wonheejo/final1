@@ -449,12 +449,16 @@ select[multiple] {
 /* FORM BUTTONS */
 
 .button, input[type=submit], input[type=button], .submit-row input, a.button {
-    background: #79aec8;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    color: #fff;
+    border: 2px solid #555555;
     cursor: pointer;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    -webkit-transition-duration: 0.4s;
+    transition-duration:
 }
 
 a.button {
@@ -464,7 +468,8 @@ a.button {
 .button:active, input[type=submit]:active, input[type=button]:active,
 .button:focus, input[type=submit]:focus, input[type=button]:focus,
 .button:hover, input[type=submit]:hover, input[type=button]:hover {
-    background: #609ab6;
+    background-color: #555555; /* Green */
+    color: white;
 }
 
 .button[disabled], input[type=submit][disabled], input[type=button][disabled] {

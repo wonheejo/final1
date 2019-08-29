@@ -168,6 +168,7 @@ def output(request):
                            rotation=0,
                            fontsize='15')
     matrix.xaxis.set_ticks_position('top')
+    matrix.figure.axes[-1].set_ylabel('', size='20')
 
     plt.savefig('final1/static/admin/img/matrix.png')
 
